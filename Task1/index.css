@@ -1,0 +1,86 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #4c9267;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.todo-container {
+  background: #40b995;
+  padding: 20px;
+  width: 500px;
+  margin: auto;
+    border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  width: 70%;
+  padding: 8px;
+border-radius: 50%  #ccc;
+  margin-bottom: 10px;
+ 
+  border: 2px solid #ccc;
+}
+
+button {
+    width: 55%;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 15px;
+    background-color: #28a745;
+  padding: 8px 10px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+li {
+  list-style: none;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li button {
+  margin-left: 5px;
+}
+.edit-btn {
+  background-color: #007bff;
+  color: white;
+  width: 50%;
+}
+
+.save-btn {
+  background-color: #28a745;
+  color: white;
+  width: 50%;
+}
+
+.delete-btn {
+  background-color: #880411;
+  color: white;
+  width: 15px;
+}
+.edit-input {
+  width: 70%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    color: #333;
+    
+}
+.task-text {
+  font-size: 18px;
+  color: #d4d0d0;
+  font-weight: bold;
+
+  margin: auto;
+  flex-grow: 1;
+  text-align: left;
+  padding: 5px;
+  
+}
