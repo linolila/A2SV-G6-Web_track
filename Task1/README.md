@@ -25,7 +25,7 @@ A simple web-based To Do List application that allows users to add, edit, and de
    ```
 2. Navigate to the Task1 folder:
    ```
-   cd Web_track/Task1
+   cd A2SV-G6-Web_track/Task1
    ```
 3. Open `index.html` in your web browser to use the app.
 
