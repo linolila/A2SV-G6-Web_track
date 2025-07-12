@@ -49,7 +49,7 @@ li button {
 .edit-btn {
   background-color: #007bff;
   color: white;
-  width: 50%;
+  width: 25%;
 }
 
 .save-btn {
@@ -61,26 +61,37 @@ li button {
 .delete-btn {
   background-color: #880411;
   color: white;
-  width: 15px;
+  width: 25%;
 }
 .edit-input {
   width: 70%;
-  padding: 8px;
+  padding: 5px;
   border-radius: 5px;
   border: 2px solid #ccc;
-    margin-bottom: 10px;
+  
     background-color: #f8f9fa;
     color: #333;
     
 }
 .task-text {
   font-size: 18px;
-  color: #d4d0d0;
+  color: #ffffff;
   font-weight: bold;
-
   margin: auto;
   flex-grow: 1;
   text-align: left;
   padding: 5px;
   
+}
+.task-checkbox {
+  margin-right: 10px;
+}
+.edited-text{
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+  margin: auto;
+  flex-grow: 1;
+  text-align: left;
+  padding: 5px;
 }
