@@ -4,7 +4,8 @@ This repository contains web development tasks and projects, organized into sepa
 
 ## Structure
 
-- **Task1/**: To Do List App
+
+- [**Task1/**](./Task1): To Do List App
   - A simple web-based To Do List application that allows users to add, edit, and delete tasks.
   - Contains source code, screenshots, and a dedicated README for Task 1.
 
@@ -16,5 +17,5 @@ This repository contains web development tasks and projects, organized into sepa
 
 ## Tasks
 
-- `Task1/` - To Do List App
+- [`Task1/`](./Task1) - To Do List App
 
