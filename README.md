@@ -18,4 +18,5 @@ This repository contains web development tasks and projects, organized into sepa
 ## Tasks
 
 - [`Task1/`](./Task1) - To Do List App
+- [`Task2/`](./Task2) - To Do List App with typescript
 
