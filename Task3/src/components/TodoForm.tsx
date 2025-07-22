@@ -68,9 +68,12 @@ const TodoForm: React.FC<TodoFormProps> = ({ tasks, setTasks }) => {
             borderRadius: '0.5rem',
             border: '1px solid #cbd5e1',
             minWidth: 200,
+            background: '#f8fafc',
+            color: '#222',
+            cursor: 'text',
           }}
-          autoFocus
-          autoComplete="off"
+          // autoFocus
+          // autoComplete="off"
         />
         <button
           type="submit"
