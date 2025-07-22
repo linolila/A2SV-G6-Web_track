@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 interface Task {
   id: number;
@@ -12,34 +12,53 @@ interface TodoFormProps {
 
 const TodoForm: React.FC<TodoFormProps> = ({ tasks, setTasks }) => {
   const [text, setText] = useState('');
+  const [editId, setEditId] = useState<number | null>(null);
   const [error, setError] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleAddTask = (e: React.FormEvent) => {
+  const handleAddOrSave = (e: React.FormEvent) => {
     e.preventDefault();
     const trimmedText = text.trim();
     if (!trimmedText) {
       setError('Task description is required.');
       return;
     }
-    setTasks([...tasks, { id: Date.now(), text: trimmedText }]);
-    setText('');
+
+    if (editId !== null) {
+      setTasks(tasks.map(t => (t.id === editId ? { ...t, text: trimmedText } : t)));
+      setEditId(null);
+      setText('');
+    } else {
+      setTasks([...tasks, { id: Date.now(), text: trimmedText }]);
+      setText('');
+    }
     setError('');
+  };
+
+  const handleEdit = (id: number) => {
+    const task = tasks.find(t => t.id === id);
+    if (task) {
+      setEditId(id);
+      setText(task.text);
+      setError('');
+      setTimeout(() => inputRef.current?.focus(), 0);
+    }
+  };
+
+  const handleDelete = (id: number) => {
+    setTasks(tasks.filter(t => t.id !== id));
+    if (editId === id) {
+      setEditId(null);
+      setText('');
+      setError('');
+    }
   };
 
   return (
     <>
-      <form
-        onSubmit={handleAddTask}
-        style={{
-          display: 'flex',
-          gap: '0.5rem',
-          alignItems: 'center',
-          margin: '1rem 0',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-        }}
-      >
+      <form onSubmit={handleAddOrSave} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '1rem' }}>
         <input
+          ref={inputRef}
           type="text"
           value={text}
           onChange={e => setText(e.target.value)}
@@ -65,7 +84,7 @@ const TodoForm: React.FC<TodoFormProps> = ({ tasks, setTasks }) => {
             cursor: 'pointer',
           }}
         >
-          Add
+          {editId !== null ? 'Save' : 'Add'}
         </button>
         {error && (
           <span style={{ color: 'red', fontSize: '0.9rem' }}>{error}</span>
@@ -82,17 +101,42 @@ const TodoForm: React.FC<TodoFormProps> = ({ tasks, setTasks }) => {
           <li
             key={task.id}
             style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              marginBottom: '0.7rem',
               background: '#f8fafc',
               borderRadius: '0.5rem',
               padding: '0.5rem 1rem',
-              marginBottom: '0.7rem',
-              fontWeight: 500,
-              color: '#2d3748',
-              fontSize: '1rem',
-              display: 'block',
             }}
           >
-            {task.text}
+            <span style={{ flex: 1 }}>{task.text}</span>
+            <button
+              onClick={() => handleEdit(task.id)}
+              style={{
+                background: '#3182ce',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '0.3rem',
+                padding: '0.3rem 0.7rem',
+                fontWeight: 500,
+              }}
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => handleDelete(task.id)}
+              style={{
+                background: '#e53e3e',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '0.3rem',
+                padding: '0.3rem 0.7rem',
+                fontWeight: 500,
+              }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
