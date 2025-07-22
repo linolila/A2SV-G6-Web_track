@@ -1,0 +1,168 @@
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f7fafc;
+  color: #222;
+  min-height: 100vh;
+  min-width: 100vw;
+  height: 100%;
+  width: 100%;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: #3182ce;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #2b6cb0;
+}
+
+/* Navbar styles */
+nav {
+  background: #f5f5f5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+nav ul {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0 2rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+nav li {
+  position: relative;
+}
+nav a {
+  padding: 0.3rem 1.2rem;
+  border-radius: 1rem;
+  display: inline-block;
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
+}
+nav a.active, nav a:focus {
+  background: #e0eafc;
+  color: #2b6cb0;
+}
+
+/* Main layout */
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #2b6cb0;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+/* Buttons */
+button, .btn {
+  background: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover, .btn:hover {
+  background: #2b6cb0;
+}
+
+/* Forms */
+input, textarea, select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  background: #f9fafb;
+  transition: border 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: #3182ce;
+  outline: none;
+}
+label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Todo list styles */
+.todo-list {
+  margin-top: 2rem;
+}
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+  border-radius: 0.5rem;
+  margin-bottom: 0.7rem;
+  transition: background 0.2s;
+}
+.todo-item.completed {
+  text-decoration: line-through;
+  color: #a0aec0;
+  background: #e6f0fa;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem 0;
+  color: #7b8794;
+  font-size: 0.95rem;
+}
+
+/* Responsive design */
+@media (max-width: 700px) {
+  .container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  nav ul {
+    gap: 1rem;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+  }
+}
