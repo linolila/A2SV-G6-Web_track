@@ -69,7 +69,7 @@ const TodoForm: React.FC<TodoFormProps> = ({ tasks, setTasks }) => {
             border: '1px solid #cbd5e1',
             minWidth: 200,
             background: '#f8fafc',
-            color: '#222',
+            color: 'black',
             cursor: 'text',
           }}
           // autoFocus

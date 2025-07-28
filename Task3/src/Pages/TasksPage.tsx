@@ -27,12 +27,12 @@ const TasksPage: React.FC = () => {
         id: Date.now(),
         text,
       },
+
     ]);
     setText('');
     setError('');
   };
-
-  const handleEdit = (id: number) => {
+const handleEdit = (id: number) => {
     const task = tasks.find(t => t.id === id);
     if (task) {
       setEditId(id);
@@ -79,7 +79,7 @@ const TasksPage: React.FC = () => {
             placeholder="Task description"
             value={editId ? editText : text}
             onChange={e => editId ? setEditText(e.target.value) : setText(e.target.value)}
-            style={{ padding: '0.5rem 1rem', borderRadius: '1rem', border: '1px solid #cbd5e1', width: '40%', minWidth: 120 }}
+            style={{ padding: '0.5rem 1rem', borderRadius: '1rem', border: '1px solid #cbd5e1', width: '40%', minWidth: 120 , color: '#222', background: '#f8fafc' }}
             autoFocus
             autoComplete="off"
           />
@@ -90,7 +90,7 @@ const TasksPage: React.FC = () => {
               color: '#fff',
               border: 'none',
               borderRadius: '2rem',
-              padding: '0.5rem 1.5rem',
+              padding: '0.5rem 1rem',
               fontWeight: 600,
               cursor: 'pointer',
               boxShadow: '0 2px 8px rgba(49,130,206,0.10)',
