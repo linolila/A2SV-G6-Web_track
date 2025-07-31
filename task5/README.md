@@ -12,10 +12,6 @@ This application provides a comprehensive job listings platform where users can 
 - **Next.js**: A React framework for building server-side rendered applications.
 - **TypeScript**: For type safety and better developer experience.
 - **Tailwind CSS**: For styling and responsive design.
-- **React**: For building user interfaces.
-- **Node.js**: For server-side logic and API handling.
-- **Express**: For creating the backend server.
-
 ## Getting Started
 To run the application locally, follow these steps:
 1. Clone the repository:
