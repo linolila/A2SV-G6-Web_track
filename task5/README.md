@@ -1,4 +1,4 @@
-// write a readme file
+
 
 # Job Listings Application
 This application provides a comprehensive job listings platform where users can explore various job opportunities. It features a user-friendly interface, detailed job descriptions, and the ability to filter jobs based on different criteria.
