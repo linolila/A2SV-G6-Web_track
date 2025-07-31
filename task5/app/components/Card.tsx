@@ -1,61 +1,64 @@
-import React from 'react';
+"use client";
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-
-type Tag = 'In Person' | 'Education' | 'IT';
-interface JobCardProps {
+interface Props {
   title: string;
-  organization: string;
-  location: string;
   description: string;
-  tags: Tag[];
-  logoUrl?: string;
+  location: string;
+  company: string;
+  tags: string[];
+  tagsStyle?: { [key: string]: string };
+  imageName: string;
 }
 
-const tagStyles: Record<Tag, string> = {
-  'In Person': 'bg-green-100 text-green-800',
-  'Education': 'bg-yellow-100 text-yellow-800',
-  'IT': 'bg-purple-100 text-purple-800',
-};
-
-const JobCard: React.FC<JobCardProps> = ({
+const JobCard: React.FC<Props> = ({
   title,
-  organization,
-  location,
   description,
+  location,
+  company,
+  imageName,
   tags,
-  logoUrl = 'https://upload.wikimedia.org/wikipedia/commons/9/9a/YMCA_logo.svg', 
+  tagsStyle = {},
 }) => {
+  const encodedTitle = encodeURIComponent(title); // Safely encode the title for URL
+
   return (
-    <div className="bg-white rounded-xl shadow-md p-6 max-w-md border border-gray-200">
-      <div className="flex items-center mb-4">
-        <img
-          src={logoUrl}
-          alt="Company Logo"
-          className="w-12 h-12 rounded-full mr-4 object-cover"
-        />
-        <div>
-          <h2 className="text-lg font-semibold text-gray-800">{title}</h2>
-          <p className="text-sm text-gray-500">
-            {organization} • {location}
-          </p>
+    <Link href={`/jobs/${encodedTitle}`} className="block hover:shadow-lg transition">
+      <div className="flex w-full rounded-2xl shadow-md p-4 bg-white">
+        <div className="w-[89px] flex-shrink-0 flex items-start justify-center mt-1">
+          <Image
+            src={`/images/${imageName}`}
+            alt={title}
+            width={60}
+            height={60}
+            className="rounded-full object-cover"
+          />
+        </div>
+        <div className="w-full pl-4">
+          <div className="flex flex-col gap-1">
+            <h2 className="text-xl font-bold">{title}</h2>
+            <span className="text-sm text-gray-500">
+              {company} – {location}
+            </span>
+          </div>
+          <p className="text-sm mt-2 text-gray-800 line-clamp-2">{description}</p>
+          <div className="flex gap-2 mt-4 flex-wrap">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  tagsStyle[tag] || "bg-gray-200 text-gray-800"
+                }`}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
-
-      <p className="text-gray-700 text-sm mb-4">
-        {description}
-      </p>
-
-      <div className="flex flex-wrap gap-2">
-        {tags.map((tag) => (
-          <span
-            key={tag}
-            className={`px-3 py-1 rounded-full text-xs font-medium ${tagStyles[tag]}`}
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
+    </Link>
   );
 };
 

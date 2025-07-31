@@ -1,17 +1,56 @@
+import React from "react";
+import jobsData from "../data/jobs.json";
+import Card from "./Card";
+import Link from "next/link"; 
 
-import JobCard from './Card';
+const imageMap: { [key: string]: string } = {
+  "Social media manager": "/socialmediaAssistant.png",
+  "Web developer": "/African.jpg",
+  "Graphic designer": "/volunter teacher.jpg",
+  "Data analyst": "/volunter teacher.jpg",
+  "Customer support specialist": "/volunter teacher.jpg",
+};
+
+const tagsStyle = {
+  "In Person": "bg-blue-100 text-blue-700",
+  "Education": "bg-green-100 text-green-700",
+  "IT": "bg-red-100 text-red-700",
+};
+
+const tags = ["In Person", "Education", "IT"];
 
 const JobList = () => {
+  const jobs = jobsData.job_postings.map((job) => ({
+    title: job.title,
+    description: job.description,
+    location: job.about.location,
+    company: job.company,
+    image: imageMap[job.title] ? imageMap[job.title] : "/default.png",
+    imageName: job.title,
+    tags,
+  }));
+
   return (
-    <div className="bg-gray-900 min-h-screen p-6 text-white">
-      <h1 className="text-2xl font-bold mb-6">Job List</h1>
-      <JobCard
-        title="Social Media Assistant"
-        organization="Young Men Christian Association"
-        location="Addis Ababa, Ethiopia"
-        description="As a Social Media Assistant, you will work closely with the social media manager or marketing team to execute social media strategies and campaigns. You will be responsible for assisting in the creation and scheduling of engaging content, monitoring social media channels, and interacting with followers."
-        tags={['In Person', 'Education', 'IT']}
-      />
+    <div className="bg-pink text-black px-4 py-8">
+      <h1 className="size-12 text-3xl font-Epilogue text-black mb-2">Opportunities</h1>
+      <p className="text-l mb-2">Showing result {jobs.length}</p>
+   <div className="rounded-l-full flex flex-col gap-6">
+      {jobs.map((job, idx) => (
+        
+          <Card
+          key={job.title + idx}
+            title={job.title}
+            description={job.description}
+            location={job.location}
+            company={job.company}
+           imageName={job.imageName}
+            tags={job.tags}
+            tagsStyle={tagsStyle}
+          />
+     
+      ))}
+   </div>
+     
     </div>
   );
 };
