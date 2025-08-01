@@ -21,4 +21,4 @@ This repository contains web development tasks and projects, organized into sepa
 - [`Task2/`](./Task2) - To Do List App with typescript
 - [`Task4/`](./Task3) - React Task Manager
 - [`Task5/`](./Task4) - Contact Form Project
-- [`Task6/`](./Task5) - Job Posting Project
+- [`Task6/`](./task5) - Job Posting Project
